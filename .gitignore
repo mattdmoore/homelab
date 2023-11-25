@@ -1,2 +1,3 @@
-turing_pi/.password_file
-turing_pi/debug.yml
+ansible/.password_file
+ansible/debug.yml
+ansible/.vscode
