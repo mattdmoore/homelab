@@ -1,0 +1,26 @@
+---
+- name: Update and install essential packages
+  ansible.builtin.include_tasks: packages.yml
+
+- name: Install fail2ban
+  ansible.builtin.include_tasks: fail2ban.yml
+  when: fail2ban_enabled | bool
+
+- name: Configure non-root user account
+  ansible.builtin.include_tasks: user.yml
+
+- name: Harden SSH
+  ansible.builtin.include_tasks: ssh.yml
+
+- name: Enable auto updates
+  ansible.builtin.include_tasks: autoupdate.yml
+  when: autoupdate_enabled | bool
+
+- name: Apply raspberry pi-specific config
+  ansible.builtin.include_tasks: raspberrypi.yml
+
+- name: Configure network
+  ansible.builtin.include_tasks: network.yml
+
+- name: Initial k3s config
+  ansible.builtin.include_tasks: k3s.yml

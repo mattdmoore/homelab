@@ -1,0 +1,14 @@
+---
+- name: Restart SSH
+  ansible.builtin.service:
+    name: "{{ sshd_name }}"
+    state: "{{ ssh_restart_handler_state }}"
+
+- name: Reload fail2ban
+  ansible.builtin.service:
+    name: fail2ban
+    state: reloaded
+
+- name: Gather the package facts
+  ansible.builtin.package_facts:
+    manager: auto
