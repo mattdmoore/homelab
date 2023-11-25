@@ -1,0 +1,46 @@
+---
+username: matt
+packages:
+  - htop
+  - speedtest-cli
+
+shell: /bin/bash
+
+# Network variables
+lan_subnet: 192.168.178.0/24
+lan_base: "{{ lan_subnet | regex_replace('.0/[0-9]{2}', '') }}"
+cluster_ip: "{{ lan_base }}.100"
+
+# K3s variables
+api_port: 6443
+k3s_server_location: /var/lib/rancher/k3s
+systemd_dir: /etc/systemd/system
+
+# SSH variables
+ssh_port: 22
+ssh_password_authentication: "no"
+ssh_permit_root_login: "no"
+ssh_usedns: "no"
+ssh_permit_empty_password: "no"
+ssh_challenge_response_auth: "no"
+ssh_gss_api_authentication: "no"
+ssh_x11_forwarding: "no"
+sshd_state: started
+ssh_restart_handler_state: restarted
+ssh_allowed_users: []
+ssh_allowed_groups: []
+ssh_config_path: /etc/ssh/sshd_config
+sshd_name: ssh
+
+sudoers_passwordless: "{{ username }}"
+sudoers_passworded: []
+autoupdate_enabled: true
+autoupdate_blacklist: []
+# Autoupdate mail settings used on Debian/Ubuntu only.
+autoupdate_reboot: "false"
+autoupdate_reboot_time: "03:00"
+autoupdate_mail_to: ""
+autoupdate_mail_on_error: true
+
+fail2ban_enabled: true
+fail2ban_custom_configuration_template: jail.local.j2
