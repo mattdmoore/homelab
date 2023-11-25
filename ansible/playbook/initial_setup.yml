@@ -1,0 +1,13 @@
+---
+- name: Configure nodes
+  hosts: turing_pi
+  gather_facts: true
+  become: true
+  roles:
+    - role: system
+
+- name: Install ZFS
+  hosts: server
+  become: true
+  roles:
+    - role: zfs
