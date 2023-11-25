@@ -1,12 +1,4 @@
 ---
-- name: Cluster prep
-  hosts: turing_pi
-  become: true
-  roles:
-    - role: prereq
-    - role: airgap
-    - role: raspberrypi
-
 - name: Setup K3S server
   hosts: server
   become: true

@@ -1,4 +1,0 @@
-[home]
-node-1 ansible_host=node-1 ansible_user="{{ username }}" ansible_connection=ssh
-node-2 ansible_host=node-2 ansible_user="{{ username }}" ansible_connection=ssh
-node-5 ansible_host=node-5 ansible_user="{{ username }}" ansible_connection=ssh
