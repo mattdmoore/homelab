@@ -1,0 +1,3 @@
+---
+- name: Install required ZFS packages
+  ansible.builtin.include_tasks: essential.yml

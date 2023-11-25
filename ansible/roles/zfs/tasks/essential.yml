@@ -1,0 +1,14 @@
+---
+- name: Install extra required modules
+  ansible.builtin.apt:
+    name:
+      - linux-headers-{{ ansible_kernel }}
+      - zfs-dkms
+      - zfsutils-linux
+      - linux-modules-extra-{{ ansible_kernel }}
+    update_cache: true
+
+- name: Enable zfs module
+  community.general.modprobe:
+    name: zfs
+    state: present
