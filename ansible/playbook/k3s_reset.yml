@@ -15,5 +15,5 @@
         removes: /var/lib/rancher/k3s/*
     - name: Remove user kubeconfig
       ansible.builtin.file:
-        path: /home/{{ ansible_user }}/.kube/config
+        path: /home/{{ username }}/.kube/config
         state: absent

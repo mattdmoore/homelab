@@ -57,9 +57,9 @@
 
     - name: Create directory .kube
       ansible.builtin.file:
-        path: ~{{ ansible_user }}/.kube
+        path: ~{{ username }}/.kube
         state: directory
-        owner: "{{ ansible_user }}"
+        owner: "{{ username }}"
         mode: "0750"
 
     - name: Pause to allow first server startup
@@ -70,14 +70,14 @@
     - name: Copy config file to user home directory
       ansible.builtin.copy:
         src: /etc/rancher/k3s/k3s.yaml
-        dest: ~{{ ansible_user }}/.kube/config
+        dest: ~{{ username }}/.kube/config
         remote_src: true
-        owner: "{{ ansible_user }}"
+        owner: "{{ username }}"
         mode: "0750"
 
     - name: Add K3s autocomplete to user bashrc
       become: true
-      become_user: "{{ ansible_user }}"
+      become_user: "{{ username }}"
       ansible.builtin.command:
         cmd: k3s completion bash -i
       register: out
@@ -87,12 +87,12 @@
       ansible.builtin.command: >-
         /usr/local/bin/k3s kubectl config set-cluster default
          --server=https://{{ api_endpoint }}:{{ api_port }}
-         --kubeconfig ~{{ ansible_user }}/.kube/config
+         --kubeconfig ~{{ username }}/.kube/config
       changed_when: true
 
     - name: Copy kubectl config to local machine
       ansible.builtin.fetch:
-        src: ~{{ ansible_user }}/.kube/config
+        src: ~{{ username }}/.kube/config
         dest: ~/.kube/config
         flat: true
 

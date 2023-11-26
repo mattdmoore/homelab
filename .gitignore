@@ -1,3 +1,4 @@
 ansible/.password_file
 ansible/debug.yml
 ansible/.vscode
+.vscode
