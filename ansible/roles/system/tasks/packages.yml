@@ -5,10 +5,3 @@
     upgrade: true
   notify:
   - Gather the package facts
-  
-- name: Install dependent packages
-  ansible.builtin.apt:
-    name: policycoreutils # Used by install script to restore SELinux context
-    update_cache: true
-  notify: 
-  - Gather the package facts

@@ -1,0 +1,4 @@
+---
+- ansible.builtin.import_playbook: playbooks/config/main.yml
+- ansible.builtin.import_playbook: playbooks/zfs/main.yml
+- ansible.builtin.import_playbook: playbooks/db/main.yml

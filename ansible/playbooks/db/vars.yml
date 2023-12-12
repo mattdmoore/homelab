@@ -1,0 +1,13 @@
+---
+mysql_user_name: "{{ username }}"
+mysql_user_password: "{{ password | password_hash('sha512') }}"
+mysql_user_home: /home
+
+mysql_datadir: /tank/db/mysql
+mysql_replication_user:
+  name: replication
+  password: "{{ mysql_password }}"
+mysql_databases:
+  - name: k3s
+
+mysql_lower_case_table_names: "1"

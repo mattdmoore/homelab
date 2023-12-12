@@ -1,0 +1,10 @@
+---
+zfs_create_pools: true
+zfs_pools:
+  - name: 'tank'
+    action: 'create'
+    devices: "{{ zfs_drives }}"
+    type: 'raidz'
+    state: 'present'
+zfs_install_update: false
+zfs_enable_monitoring: true

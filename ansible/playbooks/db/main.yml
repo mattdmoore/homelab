@@ -1,0 +1,23 @@
+---
+- name: Create MySQL databases
+  hosts: server
+  become: true
+
+  pre_tasks:
+    - name: Create dynamic variables
+      ansible.builtin.set_fact:
+        mysql_users:
+          - name: "{{ username }}"
+            host: "{{ groups['server'][0] }}"
+            password: "{{ mysql_password }}"
+            priv: "*.*:SELECT"
+          - name: "{{ username }}"
+            host: "{{ groups['server'][1] }}"
+            password: "{{ mysql_password }}"
+            priv: "*.*:SELECT"
+        mysql_replication_master: "{{ groups['server'][0] }}"
+
+  roles:
+    - geerlingguy.mysql
+  vars_files:
+    - vars.yml

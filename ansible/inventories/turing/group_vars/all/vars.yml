@@ -1,0 +1,17 @@
+---
+# User variables
+username: matt
+shell: /bin/bash
+ssh_port: 22
+
+# Ansible variables
+ansible_user: "{{ username }}"
+ansible_port: "{{ ssh_port }}"
+
+# Network variables
+lan_subnet: 192.168.178.0/24
+lan_base: "{{ lan_subnet | regex_replace('.0/[0-9]{2}', '') }}"
+cluster_ip: "{{ lan_base }}.99"
+
+# ZFS variables
+zpool_name: tank

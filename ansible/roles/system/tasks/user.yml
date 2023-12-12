@@ -13,7 +13,6 @@
       - sudo
       - users
     append: true
-    shell: "{{ shell }}"
     update_password: on_create
 
 - name: Suppress login message

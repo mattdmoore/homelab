@@ -1,0 +1,24 @@
+---
+turing_pi:
+  hosts:
+    node-1:
+    node-2:
+    node-3:
+    node-4:
+
+lb:
+  hosts:
+    node-1:
+    node-2:
+
+cluster:
+  children:
+    server:
+      hosts: 
+        node-1:
+        node-2:
+    agent:
+      hosts:
+        node-3:
+        node-4: 
+        node-5:

@@ -1,0 +1,3 @@
+---
+security_ssh_port: "{{ ssh_port }}"
+security_sudoers_passwordless: "{{ username }}"
