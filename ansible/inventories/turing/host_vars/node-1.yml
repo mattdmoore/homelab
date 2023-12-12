@@ -3,6 +3,8 @@ ansible_host: 192.168.178.101
 lb_role: MASTER
 lb_priority: 200
 
+mysql_replication_role: master
+
 zfs_drives:
   - 'ata-ST4000VN006-3CW104_ZW60F4T0'
   - 'ata-ST4000VN006-3CW104_ZW61VQB8'

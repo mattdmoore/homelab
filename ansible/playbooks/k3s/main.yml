@@ -1,0 +1,8 @@
+---
+- name: Configure K3s
+  hosts: cluster
+  become: true
+  roles:
+    - xanmanning.k3s
+  vars_files:
+    - vars.yml
