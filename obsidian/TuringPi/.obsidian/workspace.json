@@ -25,26 +25,32 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Hardware/Raspberry Pi.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "8a3447454ae473a0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Hardware/BMC.md",
+                "file": "Software/Ansible/Inventory.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
+      },
+      {
+        "id": "de5125db0fca53ff",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2f20f2f6e97581ae",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Hardware/Nvidia/Flashing Guide.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -102,7 +108,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "fa53b32cdac6e89f",
@@ -118,7 +124,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Hardware/BMC.md",
+                "file": "Software/Ansible/Inventory.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -135,7 +141,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Hardware/BMC.md",
+                "file": "Software/Ansible/Inventory.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -158,7 +164,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Hardware/BMC.md"
+                "file": "Software/Ansible/Inventory.md"
               }
             }
           }
@@ -179,14 +185,33 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8a3447454ae473a0",
+  "active": "1e13e2056fa788ff",
   "lastOpenFiles": [
-    "Hardware/Raspberry Pi.md",
-    "Hardware/NVidia Jetson.md",
+    "Software/K3s/Longhorn.md",
+    "Hardware/ZFS on ARM.md",
+    "Hardware/Nvidia/Flashing Guide.md",
+    "Hardware/Nvidia/Orin Nano.md",
+    "Hardware/Nvidia/TX2 NX.md",
     "Hardware/BMC.md",
+    "Hardware/Raspberry Pi.md",
+    "Software/Utilities/SSH.md",
+    "Software/Utilities",
+    "Contents.md",
+    "Software/Infrastructure",
+    "Software/K3s",
+    "Ansible/Untitled.md",
+    "Software/Ansible",
+    "Hardware.md",
+    "Software/Ansible/Inventory.md",
+    "Hardware/Nvidia Jetson.md",
+    "Hardware/Nvidia",
+    "Hardware/tx2-nx-guide.md",
+    "Hardware/jetson-tx2-nx-module-flashing-booting-from-nvme-and-more.md",
+    "Notes.md",
+    "Software",
     "K3s",
     "Ansible.md",
     "Hardware",
-    "Ansible"
+    "Software"
   ]
 }

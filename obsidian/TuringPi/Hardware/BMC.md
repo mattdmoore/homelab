@@ -3,6 +3,7 @@
 [Docs](https://docs.turingpi.com/docs/turing-pi2-bmc-intro-specs)
 
 ## Flashing BMC Firmware Image to  MicroSD Card
+This step should only be necessary once, when upgrading firmware from v1.x to v.2 -- subsequent updates can be done OTA using the web terminal.
 1. [Download image](https://github.com/turing-machines/BMC-Firmware/suites/18382034790/artifacts/1064830863)
 2. Diskdump to SD card
 	Replace `if=` target with firmware .img file and `of=` target with the MicroSD card device obtained from `sudo fdisk -l`
@@ -13,22 +14,16 @@
 6. Press KEY_1 three times
 	LEDs will flash from left to right during flashing; wait until they start to blink twice
 7. Remove MicroSD card and reset Turing Pi
-## Enabling SSH Keys
-Perform the following steps on client machine: 
-1. Generate SSH key pair
-	`ssh-keygen -p -f ~/.ssh/turing`
-2. Copy public key to BMC
-	`ssh-copy-id -i ~/.ssh/turing.pub root@turingpi` 
-3. Check that the BMC access via SSH key is possible
-	`ssh -i ~/.ssh/turing root@turingpi`
-4. Set as default identity key
-	`nano ~/.ssh/config` and add line `IdentityFile ~/.ssh/turing`
-	Now, `ssh root@turingpi` should be sufficient
-1. Change permissions 
-	`chmod 0600 ~/.ssh/*`
-
-Then, SSH into Turing Pi BMC and disable password authentication
-1.  `nano /etc/ssh/sshd_config` 
-2. Change `#PasswordAuthentication yes` to `PasswordAuthentication no`
-	Important: Remember to un-comment the line by deleting the `#` at the beginning
-3. (Possibly unnecessary): Add `ChallengeResponseAuthentication no`
+### Connecting to Serial Interface via UART
+[Docs](https://docs.turingpi.com/docs/turing-pi2-specs-and-io-ports#uart)
+>  DhanOS (Daniel Kukiela):
+>  Also keep in mind, that this UART interface (UART0) is actually connected to the BMC where you can connect to the node UARTs using:
+>  `microcom -s 115200 /dev/ttyS1`
+>  UARTs: 
+>```
+Node 1: /dev/ttyS2 
+Node 2: /dev/ttyS1 
+Node 3: /dev/ttyS4 
+Node 4: /dev/ttyS5 
+>``` 
+>Additionally, CM4 only has a single UART interface which means GPIO14/15 (and UART headers (for nodes 2-4) on the edge of the board) won't work with it. GPIO14/15 and UART headers are connected to UART1 for the modules that contain it (like Nvidia Jetson)
