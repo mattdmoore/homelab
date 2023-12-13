@@ -9,3 +9,4 @@ mysql_replication_user:
   password: "{{ mysql_replication_password }}"
 mysql_databases:
   - name: "{{ k3s_database_name }}"
+    # state: absent
