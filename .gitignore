@@ -2,7 +2,8 @@ roles/geerlingguy.security
 roles/mrlesmithjr.zfs
 roles/xanmanning.k3s
 roles/geerlingguy.mysql
-obsidian/TuringPi/.obsidian
+docs/TuringPi/.obsidian
 .vscode
 .archived
 .password_file
+.obsidian
