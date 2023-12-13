@@ -1,9 +1,8 @@
-ansible/.password_file
-ansible/.vscode
-ansible/roles/geerlingguy.security
-ansible/roles/mrlesmithjr.zfs
-ansible/roles/xanmanning.k3s
-ansible/roles/geerlingguy.mysql
+roles/geerlingguy.security
+roles/mrlesmithjr.zfs
+roles/xanmanning.k3s
+roles/geerlingguy.mysql
 obsidian/TuringPi/.obsidian
 .vscode
 .archived
+.password_file
