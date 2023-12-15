@@ -58,7 +58,7 @@ Currently a work in progress, so don't expect this to run out of the box. Since 
 		- 4 x 500 GB NVMe (Crucial P3, Kingston NV2)
 		- 1 x 960 GB 2.5" SATA (Kingston SA400S37)
 	- MicroSD:
-			- 3 x SanDisk 64 GB Extreme PRO
+		- 3 x SanDisk 64 GB Extreme PRO
 - Power supply:
 	- be quiet! Pure Power 11 400W
 - Case

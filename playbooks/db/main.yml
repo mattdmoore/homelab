@@ -22,7 +22,7 @@
             password: "{{ mysql_password }}"
             priv: "{{ k3s_database_name }}.*:ALL"
         mysql_replication_master: "{{ groups['server'][0] }}"
-        
+
   roles:
     - geerlingguy.mysql
   vars_files:
