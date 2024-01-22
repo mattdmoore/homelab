@@ -1,15 +1,14 @@
 # Personal homelab K3s cluster project
 
-This project automatically builds a High Availability (HA) [K3s](https://k3s.io/) cluster on a [Turing Pi 2](https://turingpi.com/product/turing-pi-2/) using [Ansible](https://www.ansible.com/).
+This project automatically builds a [K3s](https://k3s.io/) cluster on a [Turing Pi 2](https://turingpi.com/product/turing-pi-2/) using [Ansible](https://www.ansible.com/).
 
 Currently a work in progress, so don't expect this to run out of the box. Since this is a personal project, it's heavily configured towards my own hardware and I don't have any plans to change this for the foreseeable future. I'm using this to learn about DevOps, IaaC, etc. -- be careful about taking inspiration from anything you see here.
+
+![](documentation/TuringPi/image.jpg)
 
 ## Features
 
 ### Summary
-- Highly available
-	- Two-node control plane
-	- Replicated MySQL external cluster datastore
 - Infrastructure as a Code (IaaC)
 	- Ansible automation wherever possible
 - Data safety
@@ -19,10 +18,8 @@ Currently a work in progress, so don't expect this to run out of the box. Since 
 #### Automated with Ansible
 - [x] [Hardware provisioning](https://github.com/notthebee/infra)
 - [x] [SSH hardening](https://github.com/geerlingguy/ansible-role-security)
-- [x] [ZFS installation](https://github.com/mrlesmithjr/ansible-zfs) and pool creation (3-wide 4 TB RAIDZ, one pool per master node)
-- [x] [HA K3s installation](https://github.com/PyratLabs/ansible-role-k3s)
-- [x] [External MySQL cluster datastore](https://github.com/geerlingguy/ansible-role-mysql)
-- [x] Kube-vip virtual cluster IP (based on work by [Techno Tim](https://github.com/techno-tim/k3s-ansible))
+- [x] [ZFS installation](https://github.com/mrlesmithjr/ansible-zfs) and pool creation (3-wide 4 TB RAIDZ)
+- [x] [K3s installation](https://github.com/PyratLabs/ansible-role-k3s)
 - [ ] Longhorn storage manager deployment
 
 #### Manually configured (to automate)
