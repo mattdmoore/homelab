@@ -2,7 +2,7 @@
 
 This project automatically builds a [K3s](https://k3s.io/) cluster on a [Turing Pi 2](https://turingpi.com/product/turing-pi-2/) using [Ansible](https://www.ansible.com/).
 
-Currently a work in progress, so don't expect this to run out of the box. Since this is a personal project, it's heavily configured towards my own hardware and I don't have any plans to change this for the foreseeable future. I'm using this to learn about DevOps, IaaC, etc. -- be careful about taking inspiration from anything you see here.
+Currently a work in progress, so don't expect this to run out of the box. Since this is a personal project, it's heavily configured towards my own hardware and I don't have any plans to change this for the foreseeable future. I'm using this to learn about self-hosting, IaaC, system integration, etc. -- be careful about taking inspiration from anything you see here.
 
 ![](documentation/TuringPi/image.jpg)
 
@@ -11,42 +11,40 @@ Currently a work in progress, so don't expect this to run out of the box. Since 
 ### Summary
 - Infrastructure as a Code (IaaC)
 	- Ansible automation wherever possible
-- Data safety
-	- Distributed storage
-	- ZFS pools on multiple nodes with scheduled scrubs
+- Self-hosted services
+	- Nextcloud, Home Assistant, Jellyfin, PiHole
+- Automated Backups
+	- Data safety: distributed storage, ZFS pools on multiple nodes with scheduled scrubs
 
 #### Automated with Ansible
 - [x] [Hardware provisioning](https://github.com/notthebee/infra)
 - [x] [SSH hardening](https://github.com/geerlingguy/ansible-role-security)
-- [x] [ZFS installation](https://github.com/mrlesmithjr/ansible-zfs) and pool creation (3-wide 4 TB RAIDZ)
+- [ ] [ZFS installation](https://github.com/mrlesmithjr/ansible-zfs) and pool creation
+- Broken by upgrade to Turing RK1s 
 - [x] [K3s installation](https://github.com/PyratLabs/ansible-role-k3s)
-- [ ] Longhorn storage manager deployment
 
-#### Manually configured (to automate)
-- [x] Zigbee2MQTT (Docker)
-- [x] HomeAssistant (Docker)
-- [x] Cloudflare Tunnelling
+#### Kubernetes Deployments
+- [x] Home Assistant
+- [x] Mosquitto
+- [x] Zigbee2MQTT
+- [x] Node-RED
+- [ ] Nextcloud
+- [ ] Collabora
 
 #### Roadmap
-- [ ] Self-hosted services (NextCloud, Jellyfin, etc.)
 - [ ] VPN with WireGuard and Mullvad
-- [ ] Automated certificate management
-- [ ] Automated CI/CD
+- [ ] Certificate management
+- [ ] Cloudflare tunneling
 
 ## Hardware list
 
 - Turing Pi 2
-	- node-1: Raspberry Pi CM4 (Lite, 8 GB RAM, WLAN)
-	- node-2: Raspberry Pi CM4 (Lite, 8 GB RAM)
+	- node-1: Turing RK1 32 GB
+	- node-2: Turing RK1 32 GB
 	- node-3: Nvidia Jetson TX2 NX
-	- node-4: Raspberry Pi CM4 (Lite, 4 GB RAM)
+	- node-4: Raspberry Pi CM4 (Lite, 8 GB RAM)
 - External node(s)
 	- node-5: ZimaBoard 832
-- Upgrade roadmap
-	- Turing RK1 32 GB; nodes 1 & 2 (pre-ordered)
-	- Nvidia Jetson Orin Nano; node 3 (when JetPack 4.6 obsoleted)
-	- Raspberry Pi CM5(?); node 4 (if compatible)
-	- [PiKVM x650](https://geekworm.com/products/pikvm-x650)
 
 - Storage
 	- HDD: 
