@@ -11,14 +11,22 @@ lb:
     node-1:
     node-2:
 
+zfs:
+  hosts:
+    node-1:
+    node-2:
+
 cluster:
   children:
     server:
       hosts: 
         node-1:
         node-2:
+        node-3:
+          disable-apiserver: true
+          disable-controller-manager: true
+          disable-scheduler: true
     agent:
       hosts:
-        node-3:
         node-4: 
         node-5:

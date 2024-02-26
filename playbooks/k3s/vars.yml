@@ -2,10 +2,10 @@
 # K3s variables
 k3s_state: installed
 
+k3s_use_unsupported_config: true
 k3s_registration_address: "{{ cluster_vip }}"
 k3s_become: true
 k3s_server:
-  datastore-endpoint: "mysql://{{ mysql_k3s_user }}:{{ mysql_password }}@tcp({{ groups['server'][0] }}:3306)/{{ k3s_database_name }}"
   tls-san: "{{ cluster_vip }}"
   disable:
     - servicelb
