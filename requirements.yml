@@ -1,6 +1,4 @@
 ---
 roles:
-  - name: mrlesmithjr.zfs
   - name: xanmanning.k3s
   - name: geerlingguy.security
-  - name: geerlingguy.mysql

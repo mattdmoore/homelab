@@ -3,9 +3,3 @@
 k3s_control_node: true
 k3s_etcd_datastore: true
 k3s_database_name: k3s
-
-# MySQL variables
-mysql_k3s_user: k3s_user
-
-# ZFS variables
-zpool_name: tank

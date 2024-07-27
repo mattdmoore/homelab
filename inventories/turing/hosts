@@ -6,16 +6,6 @@ turing_pi:
     node-3:
     node-4:
 
-lb:
-  hosts:
-    node-1:
-    node-2:
-
-zfs:
-  hosts:
-    node-1:
-    node-2:
-
 cluster:
   children:
     server:

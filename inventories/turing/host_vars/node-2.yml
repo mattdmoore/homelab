@@ -1,11 +1,2 @@
 ---
 ansible_host: 192.168.178.102
-lb_role: BACKUP
-lb_priority: 100
-
-mysql_replication_role: slave
-
-zfs_drives:
-  - 'ata-ST4000VN006-3CW104_ZW60E71A'
-  - 'ata-ST4000VN006-3CW104_WW6015YE'
-  - 'ata-ST4000VN006-3CW104_WW60BJAA'
