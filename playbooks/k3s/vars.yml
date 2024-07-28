@@ -9,6 +9,7 @@ k3s_server:
   tls-san: "{{ cluster_vip }}"
   disable:
     - servicelb
+    - traefik
 
 k3s_agent:
   kubelet-arg:
