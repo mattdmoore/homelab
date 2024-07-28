@@ -1,0 +1,7 @@
+---
+- name: Initial configuration
+  hosts: cluster
+  become: true
+  roles:
+    - system
+    - security

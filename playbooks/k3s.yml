@@ -1,0 +1,12 @@
+---
+- name: Configure K3s
+  hosts: cluster
+  become: true
+  roles:
+    - k3s
+
+- name: Deploy kube-vip
+  hosts: server
+  become: true
+  roles:
+    - kube-vip

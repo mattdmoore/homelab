@@ -1,6 +1,0 @@
----
-# - name: Initial setup
-#   ansible.builtin.import_playbook: initial_setup.yml
-
-# - name: Create K3s cluster
-#   ansible.builtin.import_playbook: k3s_create.yml
