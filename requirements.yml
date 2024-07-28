@@ -1,4 +1,6 @@
 ---
 roles:
-  - name: xanmanning.k3s
-  - name: geerlingguy.security
+  - name: k3s
+    src: xanmanning.k3s
+  - name: security
+    src: geerlingguy.security
