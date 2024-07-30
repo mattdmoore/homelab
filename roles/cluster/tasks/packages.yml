@@ -3,5 +3,4 @@
   ansible.builtin.apt:
     update_cache: true
     upgrade: true
-  notify:
-  - Gather the package facts
+  notify: Gather the package facts
