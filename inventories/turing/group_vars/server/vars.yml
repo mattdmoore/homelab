@@ -1,5 +1,9 @@
 ---
-# K3s variables
+# K3s
 k3s_control_node: true
 k3s_etcd_datastore: true
 k3s_database_name: k3s
+
+# Kube-vip
+kube_vip_tag_version: "v0.6.4"
+kube_vip_iface: eth0

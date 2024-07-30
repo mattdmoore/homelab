@@ -3,5 +3,5 @@
   hosts: cluster
   become: true
   roles:
-    - system
+    - cluster
     - security

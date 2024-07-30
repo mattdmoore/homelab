@@ -1,15 +1,35 @@
 ---
-# User variables
+# User
 username: matt
 shell: /bin/bash
 ssh_port: 22
 
-# Ansible variables
+# Ansible
 ansible_user: "{{ username }}"
 ansible_port: "{{ ssh_port }}"
 ansible_python_interpreter: /usr/bin/python3
 
-# Network variables
+# Network
 lan_subnet: 192.168.178.0/24
 lan_base: "{{ lan_subnet | regex_replace('.0/[0-9]{2}', '') }}"
 cluster_vip: "{{ lan_base }}.99"
+
+# Geerling Security
+security_ssh_port: "{{ ssh_port }}"
+security_sudoers_passwordless: "{{ username }}"
+
+# K3s
+k3s_state: installed
+
+k3s_use_unsupported_config: true
+k3s_registration_address: "{{ cluster_vip }}"
+k3s_become: true
+k3s_server:
+  tls-san: "{{ cluster_vip }}"
+  disable:
+    - servicelb
+    - traefik
+
+k3s_agent:
+  kubelet-arg:
+    - "node-status-update-frequency=5s"
