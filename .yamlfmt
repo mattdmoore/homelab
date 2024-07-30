@@ -4,4 +4,3 @@ formatter:
   eof_newline: true
   trim_trailing_whitespace: true
   retain_line_breaks_single: true
-
