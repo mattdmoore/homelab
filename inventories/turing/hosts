@@ -13,9 +13,6 @@ cluster:
         node-1:
         node-2:
         node-3:
-          disable-apiserver: true
-          disable-controller-manager: true
-          disable-scheduler: true
     agent:
       hosts:
         node-4: 

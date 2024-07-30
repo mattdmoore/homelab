@@ -1,2 +1,6 @@
 ---
 ansible_host: 192.168.178.103
+disable-apiserver: true
+disable-controller-manager: true
+disable-scheduler: true
+
