@@ -5,3 +5,6 @@ ansible-requirements:
 
 provision:
 	ansible-playbook playbooks/provision.yml
+
+build-cluster:
+	ansible-playbook playbooks/k3s.yml
