@@ -1,6 +1,10 @@
 ---
 - name: Update packages
   ansible.builtin.apt:
+    state: fixed
+    autoremove: true
+    clean: true
+    purge: true
     update_cache: true
     upgrade: true
   notify: Gather the package facts

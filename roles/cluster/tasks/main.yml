@@ -1,6 +1,8 @@
 ---
 - name: Update and install essential packages
-  ansible.builtin.include_tasks: packages.yml
+  ansible.builtin.import_tasks:
+    file: packages.yml
 
 - name: Configure non-root user account
-  ansible.builtin.include_tasks: user.yml
+  ansible.builtin.import_tasks:
+    file: user.yml

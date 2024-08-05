@@ -1,3 +1,6 @@
 ---
-username: matt
-password: faultedwordpass
+cluster_vars:
+  ssh:
+    authorised_key: "{{ lookup('ansible.builtin.env', 'HOME') + '/.ssh/turing.pub' }}"
+  snapd:
+    enabled: false

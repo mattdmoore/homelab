@@ -1,0 +1,12 @@
+---
+- name: Disable snapd services
+  ansible.builtin.systemd_service:
+    name: "{{ item }}"
+    state: stopped
+    enabled: false
+  loop:
+    - snapd.apparmor.service
+    - snapd.service
+    - snapd.seeded.service
+    - snapd.socket
+  when: not cluster_vars.snapd.enabled

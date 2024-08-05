@@ -15,6 +15,11 @@
     append: true
     update_password: on_create
 
+- name: Set authorised key
+  ansible.posix.authorized_key:
+    key: "{{ lookup('ansible.builtin.file', cluster_vars.ssh.authorised_key) }}"
+    user: "{{ username }}"
+
 - name: Suppress login message
   ansible.builtin.file:
     path: /home/{{ username }}/.hushlogin
