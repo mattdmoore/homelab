@@ -8,3 +8,6 @@ provision:
 
 build-cluster:
 	ansible-playbook playbooks/k3s.yml
+
+kube-vip:
+	ansible-playbook playbooks/kube-vip.yml

@@ -9,11 +9,11 @@ turing_pi:
 cluster:
   children:
     server:
-      hosts: 
+      hosts:
         node-1:
         node-2:
-        node-3:
+        node-5:
     agent:
       hosts:
-        node-4: 
-        node-5:
+        node-3:
+        node-4:

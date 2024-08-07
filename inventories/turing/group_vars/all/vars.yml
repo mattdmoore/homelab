@@ -29,6 +29,8 @@ k3s_server:
   disable:
     - servicelb
     - traefik
+  kube-proxy-arg:
+    - "proxy-mode=ipvs"
 
 k3s_agent:
   kubelet-arg:
