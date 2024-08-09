@@ -1,0 +1,5 @@
+---
+- name: Deploy traefik
+  hosts: localhost
+  roles:
+    - traefik

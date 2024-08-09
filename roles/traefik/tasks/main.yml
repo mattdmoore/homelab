@@ -1,0 +1,12 @@
+---
+- name: Grant Traefik permissions
+  ansible.builtin.import_tasks:
+    file: permissions.yml
+
+- name: Deploy Traefik
+  ansible.builtin.import_tasks:
+    file: deployment.yml
+
+- name: Create Traefik services
+  ansible.builtin.import_tasks:
+    file: services.yml
