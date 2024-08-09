@@ -4,4 +4,5 @@ metadata:
   name: kubevip
   namespace: kube-system
 data:
-  cidr-default: 192.168.178.200/29
+  cidr-default: {{ kube_vip_default_pool }}
+  cidr-traefik: {{ kube_vip_traefik_pool }}
