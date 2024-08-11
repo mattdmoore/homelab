@@ -1,0 +1,19 @@
+---
+- name: Create Namespace
+  kubernetes.core.k8s:
+    state: present
+    name: cert-manager
+    api_version: v1
+    kind: Namespace
+
+- name: Install cert-manager Bitnami chart
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      kind: HelmChart
+      apiVersion: helm.cattle.io/v1
+      metadata:
+        name: cert-manager
+        namespace: cert-manager
+      spec:
+        chart: oci://registry-1.docker.io/bitnamicharts/cert-manager
