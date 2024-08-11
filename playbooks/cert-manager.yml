@@ -1,0 +1,5 @@
+---
+- name: Deploy cert-manager
+  hosts: localhost
+  roles:
+    - cert-manager
