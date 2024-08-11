@@ -1,0 +1,10 @@
+---
+- name: Download and apply CRDs
+  kubernetes.core.k8s:
+    state: present
+    src: https://raw.githubusercontent.com/traefik/traefik/v3.1/docs/content/reference/dynamic-configuration/kubernetes-crd-definition-v1.yml
+
+- name: Download and apply traefik-ingress-controller RBAC and RoleBinding
+  kubernetes.core.k8s:
+    state: present
+    src: https://raw.githubusercontent.com/traefik/traefik/v3.1/docs/content/reference/dynamic-configuration/kubernetes-crd-rbac.yml

@@ -1,12 +1,57 @@
 ---
-- name: Create Traefik Deployment
+- name: Create Namespace
+  kubernetes.core.k8s:
+    state: present
+    name: traefik
+    api_version: v1
+    kind: Namespace
+
+- name: Create ServiceAccount
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: ServiceAccount
+      metadata:
+        namespace: traefik
+        name: traefik-ingress-controller
+
+- name: Create LoadBalancer Service
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      kind: Service
+      apiVersion: v1
+      metadata:
+        name: traefik
+        namespace: traefik
+
+      spec:
+        type: LoadBalancer
+        selector:
+          app: traefik
+        ports:
+          - name: web
+            port: 80
+            targetPort: 80
+            protocol: TCP
+          - name: dashboard
+            port: 8080
+            targetPort: 8080
+            protocol: TCP
+          - name: websecure
+            port: 443
+            targetPort: 80
+            protocol: TCP
+
+- name: Create Deployment
   kubernetes.core.k8s:
     state: present
     definition:
       kind: Deployment
       apiVersion: apps/v1
       metadata:
-        name: traefik-deployment
+        name: traefik
         namespace: traefik
         labels:
           app: traefik
@@ -21,15 +66,23 @@
             labels:
               app: traefik
           spec:
-            serviceAccountName: traefik-account
+            serviceAccountName: traefik-ingress-controller
             containers:
               - name: traefik
                 image: traefik:v3.1
                 args:
-                  - --api.insecure
-                  - --providers.kubernetesingress
+                  - --log.level=DEBUG
+                  - --api.dashboard=true
+                  - --api.insecure=true
+                  # - --entrypoints.web.address=:80
+                  # - --entrypoints.web.http.redirections.entrypoint.to=websecure
+                  # - --entrypoints.web.http.redirections.entrypoint.scheme=https
+                  # - --entrypoints.websecure.address=:443
+                  # - --entrypoints.websecure.asDefault=true
                 ports:
                   - name: web
                     containerPort: 80
                   - name: dashboard
                     containerPort: 8080
+                  - name: websecure
+                    containerPort: 443

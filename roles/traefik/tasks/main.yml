@@ -1,12 +1,12 @@
 ---
-- name: Grant Traefik permissions
+- name: Install prerequisites
   ansible.builtin.import_tasks:
-    file: permissions.yml
+    file: prerequisites.yml
 
-- name: Deploy Traefik
+- name: Deploy resources
   ansible.builtin.import_tasks:
     file: deployment.yml
 
-- name: Create Traefik services
+- name: Configure ingress
   ansible.builtin.import_tasks:
-    file: services.yml
+    file: ingress.yml
