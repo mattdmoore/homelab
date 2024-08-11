@@ -1,12 +1,26 @@
 ---
-- name: Install prerequisites
-  ansible.builtin.import_tasks:
-    file: prerequisites.yml
+- name: Create Namespace
+  kubernetes.core.k8s:
+    state: present
+    name: traefik
+    api_version: v1
+    kind: Namespace
 
-- name: Deploy resources
-  ansible.builtin.import_tasks:
-    file: deployment.yml
-
-- name: Configure ingress
-  ansible.builtin.import_tasks:
-    file: ingress.yml
+- name: Install Helm chart
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      kind: HelmChart
+      apiVersion: helm.cattle.io/v1
+      metadata:
+        name: traefik
+        namespace: traefik
+      spec:
+        repo: https://traefik.github.io/charts
+        chart: traefik
+        targetNamespace: traefik
+        valuesContent: |-
+          ingressRoute:
+            dashboard:
+              enabled: true
+              entryPoints: ["websecure"]
