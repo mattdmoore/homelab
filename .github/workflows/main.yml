@@ -2,7 +2,7 @@ name: hello-world
 on: push
 jobs:
   my-job:
-    runs-on: arc-runner-set
+    runs-on: arc-runners
     steps:
       - name: my-step
         run: echo "Hello World!"
