@@ -10,7 +10,7 @@
 
 - name: Apply configmap
   ansible.builtin.template:
-    src: "loadbalancer.yaml.j2"
+    src: "loadbalancer.yml.j2"
     dest: "/var/lib/rancher/k3s/server/manifests/vip-cc-configmap.yaml"
     owner: root
     group: root
