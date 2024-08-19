@@ -1,0 +1,23 @@
+---
+- name: Create namespace
+  kubernetes.core.k8s:
+    state: present
+    name: argocd
+    api_version: v1
+    kind: Namespace
+
+- name: Install
+  kubernetes.core.k8s:
+    state: present
+    src: https://raw.githubusercontent.com/argoproj/argo-cd/master/manifests/ha/install.yaml
+    namespace: argocd
+
+- name: Apply configmap
+  kubernetes.core.k8s:
+    state: present
+    template: "configmap.yml.j2"
+
+- name: Configure Traefik ingress
+  kubernetes.core.k8s:
+    state: present
+    template: "ingress.yml.j2"
