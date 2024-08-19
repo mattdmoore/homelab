@@ -2,3 +2,4 @@ roles/security
 roles/k3s
 .password_file
 .null-ls_*
+*.pem

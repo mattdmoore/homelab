@@ -24,3 +24,11 @@
             dashboard:
               enabled: true
               entryPoints: ["websecure"]
+              matchRule: Host(`traefik.turing`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+          certResolvers:
+            letsencrypt:
+              email: "{{ email }}"
+              storage: /data/acme.json
+              caServer: https://acme-staging-v02.api.letsencrypt.org/directory
+              httpChallenge:
+                entryPoint: web
