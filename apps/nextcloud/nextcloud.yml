@@ -12,6 +12,8 @@ spec:
   project: default
   source:
     chart: nextcloud
+    repoURL: https://nextcloud.github.io/helm/
+    targetRevision: 5.5.2
     helm:
       values: |
         internalDatabase:
@@ -42,3 +44,9 @@ spec:
                   userPasswordKey: postgres-password
                   replicationPasswordKey: postgres-replication-password
                 database: nextcloud
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
