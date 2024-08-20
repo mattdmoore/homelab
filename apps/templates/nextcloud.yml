@@ -63,3 +63,20 @@ stringData:
   postgres-admin-password: "generate|16"
   postgresql-replication-password: "generate|16"
   postgres-username: nextcloud
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nextcloud-route
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`nextcloud.turing`)
+      kind: Rule
+      services:
+        - kind: Service
+          name: nextcloud
+          port: 8080
+          sticky:
+            cookie: {}
