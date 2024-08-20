@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  name: nextcloud
+  namespace: argocd
+spec:
+  destination:
+    namespace: nextcloud
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: nextcloud
+    helm:
+      values: |
+        internalDatabase:
+          enabled: false
+        externalDatabase:
+          enabled: true
+          type: "pgsql"
+          host: nextcloud-postgresql
+          port: 5432
+          user: nextcloud
+          password: null
+          existingSecret:
+            enabled: true
+            secretName: nextcloud
+            usernameKey: postgres-username
+            passwordKey: postgres-password
+          database: nextcloud
+        postgresql:
+          enabled: true
+          global:
+            postgresql:
+              auth:
+                username: nextcloud
+                existingSecret: nextcloud
+                secretKeys:
+                  secretName: nextcloud
+                  adminPasswordKey: postgres-password
+                  userPasswordKey: postgres-password
+                  replicationPasswordKey: postgres-replication-password
+                database: nextcloud
